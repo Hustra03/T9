@@ -26,8 +26,8 @@ public class App {
         t9.addString("noo".toLowerCase());
         t9.addString("mom".toLowerCase());
         t9.addString("cat".toLowerCase());
-        
-        List list = t9.returnValidStringForInput("000");
+
+        List list = t9.returnValidStringForInput("343");
         for (Object object : list) {
             System.out.println("Valid " + object);
         }

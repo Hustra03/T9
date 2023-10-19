@@ -8,11 +8,17 @@ public class T9 {
         this.root = new Node();
     }
 
+    public void T9AddEveryWord()
+    {
+
+    }
+
     public void addString(String toAdd) {
 
         root.addString(toAdd);
 
     }
+    
 
     public List<String> returnValidString(int desiredLength) {
         List<String> list = new LinkedList<String>();

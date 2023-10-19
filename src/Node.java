@@ -9,9 +9,12 @@ public class Node {
         valid = false;
     }
 
+    public void setValid(boolean value) {
+        this.valid = value;
+    }
+
     public void addString(String toAdd) {
 
-        this.valid = true;
         if (toAdd.length() > 0) {
 
             String nextString = toAdd.substring(1);
@@ -19,7 +22,9 @@ public class Node {
             int indexOfNextLetter = code(currentLetter);
             if (next[indexOfNextLetter] == null) {
                 next[indexOfNextLetter] = new Node();
+
             }
+            next[indexOfNextLetter].setValid(true);
             next[indexOfNextLetter].addString(nextString);
         }
     }
@@ -64,13 +69,15 @@ public class Node {
                                 currentLength + 1);
 
                     }
-                }
-                if (this.valid == true && list.contains(input) != true && desiredLength == currentLength) {
 
-                    list.add(input);
                 }
 
             }
+
+        }
+        if (desiredLength == currentLength && this.valid == true) {
+
+            list.add(input);
         }
 
         return list;
