@@ -22,7 +22,7 @@ public class App {
 
         T9 t9 = new T9();
         t9.T9AddEveryWord();
-        String testString = "uniform";
+        String testString = "julgran";
 
         List list = t9.returnValidStringForInput(StringToCode(testString));
         for (Object object : list) {
