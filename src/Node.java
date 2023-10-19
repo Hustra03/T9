@@ -12,10 +12,13 @@ public class Node {
     public void addString(String toAdd) {
 
         this.valid = true;
-        if (toAdd.length() > 0) {
+        if (toAdd.length() > 1) {
 
             String nextString = toAdd.substring(1);
             char currentLetter = toAdd.charAt(0);
+            if (next[code(currentLetter)] == null) {
+                next[code(currentLetter)] = new Node();
+            }
             next[code(currentLetter)].addString(nextString);
         }
     }
