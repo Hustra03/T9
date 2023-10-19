@@ -12,30 +12,92 @@ public class Node {
     public void addString(String toAdd) {
 
         this.valid = true;
-        if (toAdd.length() > 1) {
+        if (toAdd.length() > 0) {
 
             String nextString = toAdd.substring(1);
             char currentLetter = toAdd.charAt(0);
-            if (next[code(currentLetter)] == null) {
-                next[code(currentLetter)] = new Node();
+            int indexOfNextLetter = code(currentLetter);
+            if (next[indexOfNextLetter] == null) {
+                next[indexOfNextLetter] = new Node();
             }
-            next[code(currentLetter)].addString(nextString);
+            next[indexOfNextLetter].addString(nextString);
         }
     }
 
-    public List<String> returnValidString(List list, String input) {
+    public List<String> returnValidString(List list, String input, int desiredLength, int currentLength) {
+
         for (int i = 0; i < next.length; i++) {
+            String string = input + codeReverse(i);
+            if (next[i] != null) {
 
-            if (next[i].valid == true) {
-                String string = input + codeReverse(i);
-                next[i].returnValidString(list, string);
+                if (next[i].valid == true) {
 
-            } else {
+                    list = next[i].returnValidString(list, string, desiredLength, currentLength + 1);
+
+                }
+            }
+            if (this.valid == true && list.contains(input) != true && desiredLength == currentLength) {
+
                 list.add(input);
+            }
+
+        }
+
+        return list;
+    }
+
+    public List<String> returnValidStringSpecificValue(List list, String code, String input, int desiredLength,
+            int currentLength) {
+
+        if (code.length() > 0) {
+            String nextCode = code.substring(1);
+            char currentNumber = code.charAt(0);
+            int indexOfNextLetter = index(currentNumber);
+
+            for (int i = indexOfNextLetter; i < indexOfNextLetter + 3; i++) {
+                String string = input + codeReverse(i);
+                if (next[i] != null) {
+
+                    if (next[i].valid == true) {
+
+                        list = next[i].returnValidStringSpecificValue(list, nextCode, string, desiredLength,
+                                currentLength + 1);
+
+                    }
+                }
+                if (this.valid == true && list.contains(input) != true && desiredLength == currentLength) {
+
+                    list.add(input);
+                }
+
             }
         }
 
         return list;
+    }
+
+    private static int index(char w) {
+        switch (w) {
+            case '0':
+                return 0;
+            case '1':
+                return 3;
+            case '2':
+                return 6;
+            case '3':
+                return 9;
+            case '4':
+                return 12;
+            case '5':
+                return 15;
+            case '6':
+                return 18;
+            case '7':
+                return 21;
+            case '8':
+                return 24;
+        }
+        return -1;
     }
 
     private static int code(char w) {
