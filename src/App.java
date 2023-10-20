@@ -10,17 +10,31 @@ public class App {
         t9ActualTest();
         // T9NumberTest();
         // T9Test();
-        // test();
+        //test();
+        t9SpecificTest("hej");
     }
 
     public static void test() {
         String toAdd = "lol";
         while (toAdd.length() > 0) {
             System.out.println(toAdd);
+            System.out.println(toAdd.length());
             String nextString = toAdd.substring(1);
+            
             toAdd = nextString;
         }
 
+    }
+
+    public static void t9SpecificTest(String string) {
+        System.out.println(string + " = " + StringToCode("hej"));
+
+        T9 t9 = new T9();
+        t9.T9AddEveryWord();
+        List validList = t9.returnValidStringForInput(StringToCode(string));
+        for (Object object : validList) {
+            System.out.println("\t Valid " + object);
+        }
     }
 
     public static void t9ActualTest() {
@@ -46,15 +60,14 @@ public class App {
 
         for (String string : list1) {
 
-
             List validList = t9.returnValidStringForInput(StringToCode(string));
-            if (validList.contains(string)==false) {
+            if (validList.contains(string) == false) {
                 System.out.println("Missing String " + string);
             }
-            System.out.println(string);
+            /*System.out.println(string);
             for (Object object : validList) {
                 System.out.println("\t Valid " + object);
-            }
+            }*/
         }
     }
 

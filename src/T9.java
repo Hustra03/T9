@@ -31,9 +31,7 @@ public class T9 {
     }
 
     public void addString(String toAdd) {
-
         root.addString(toAdd);
-
     }
 
     public List<String> returnValidString(int desiredLength) {

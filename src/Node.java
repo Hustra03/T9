@@ -24,8 +24,12 @@ public class Node {
                 next[indexOfNextLetter] = new Node();
 
             }
-            next[indexOfNextLetter].setValid(true);
-            next[indexOfNextLetter].addString(nextString);
+
+            if (nextString.length() == 0) {
+                next[indexOfNextLetter].setValid(true);
+            } else {
+                next[indexOfNextLetter].addString(nextString);
+            }
         }
     }
 
@@ -63,12 +67,8 @@ public class Node {
                 String string = input + codeReverse(i);
                 if (next[i] != null) {
 
-                    if (next[i].valid == true) {
-
-                        list = next[i].returnValidStringSpecificValue(list, nextCode, string, desiredLength,
-                                currentLength + 1);
-
-                    }
+                    list = next[i].returnValidStringSpecificValue(list, nextCode, string, desiredLength,
+                            currentLength + 1);
 
                 }
 
