@@ -10,7 +10,7 @@ public class App {
         t9ActualTest();
         // T9NumberTest();
         // T9Test();
-        //test();
+        // test();
         t9SpecificTest("cd");
     }
 
@@ -20,7 +20,7 @@ public class App {
             System.out.println(toAdd);
             System.out.println(toAdd.length());
             String nextString = toAdd.substring(1);
-            
+
             toAdd = nextString;
         }
 
@@ -64,10 +64,11 @@ public class App {
             if (validList.contains(string) == false) {
                 System.out.println("Missing String " + string);
             }
-            /*System.out.println(string);
+
+            System.out.println(string);
             for (Object object : validList) {
                 System.out.println("\t Valid " + object);
-            }*/
+            }
         }
     }
 
