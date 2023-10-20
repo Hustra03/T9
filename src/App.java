@@ -11,7 +11,7 @@ public class App {
         // T9NumberTest();
         // T9Test();
         //test();
-        t9SpecificTest("hej");
+        t9SpecificTest("cd");
     }
 
     public static void test() {
@@ -27,7 +27,7 @@ public class App {
     }
 
     public static void t9SpecificTest(String string) {
-        System.out.println(string + " = " + StringToCode("hej"));
+        System.out.println(string + " = " + StringToCode(string));
 
         T9 t9 = new T9();
         t9.T9AddEveryWord();
