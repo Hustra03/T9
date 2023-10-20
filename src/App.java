@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
 import java.util.List;
 
 public class App {
@@ -22,16 +27,38 @@ public class App {
 
         T9 t9 = new T9();
         t9.T9AddEveryWord();
-        String testString = "julgran";
+        String file = "src\\kelly.txt";
+        List<String> list1 = new LinkedList<String>();
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader((new InputStreamReader(new FileInputStream(file), "UTF-8")));
+            String line = reader.readLine();
 
-        List list = t9.returnValidStringForInput(StringToCode(testString));
-        for (Object object : list) {
-            System.out.println("Valid " + object);
+            while (line != null) {
+                list1.add(line);
+                line = reader.readLine();
+            }
+
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (String string : list1) {
+
+
+            List validList = t9.returnValidStringForInput(StringToCode(string));
+            if (validList.contains(string)==false) {
+                System.out.println("Missing String " + string);
+            }
+            System.out.println(string);
+            for (Object object : validList) {
+                System.out.println("\t Valid " + object);
+            }
         }
     }
 
-    public static String StringToCode(String string)
-    {
+    public static String StringToCode(String string) {
 
         char testStringChar[] = string.toCharArray();
         String testCode = "";
